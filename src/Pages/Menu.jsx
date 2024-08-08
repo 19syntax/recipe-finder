@@ -1,51 +1,12 @@
-import { useState } from "react";
 import saveIcon from "../assets/images/outline.svg";
-import { useEffect } from "react";
+import ErrMsg from "../component/ErrMsg";
+import Loader from "../component/Loader";
+import { useRecipe } from "../Context";
 import RecipeDetails from "./RecipeDetails";
-// import { data } from "autoprefixer";
 
-function Home() {
-  const [input, setInput] = useState("");
-  const [meals, setMeals] = useState([]);
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [detail, setDetail] = useState(null);
-
-  function handClicked(e) {
-    e.preventDefault();
-    // console.log(e.target.value);
-  }
-  function handleDetails(item) {
-    // setDetails(!details);
-    setDetail(item);
-  }
-
-  useEffect(
-    function () {
-      async function fetchMovies() {
-        try {
-          setIsLoading(true);
-
-          const res = await fetch(
-            `https://themealdb.com/api/json/v1/1/search.php?s=${input}`
-          );
-          if (!res.ok) throw new Error("Something went wrong");
-          if (res.ok) setError("");
-          const data = await res.json();
-
-          const mealsArray = Object.values(data.meals);
-          setMeals(mealsArray);
-        } catch (err) {
-          setError(err.message);
-        } finally {
-          setIsLoading(false);
-        }
-      }
-      fetchMovies();
-    },
-    [input]
-  );
-
+function Menu() {
+  const { state, handClicked, handleDetails, dispatch } = useRecipe();
+  const { input, meals, error, isLoading, detail } = state;
   return (
     <div className="w-full absolute mt-24">
       <div className="flex text-xs mb-4 gap-2 justify-center mx-auto">
@@ -54,7 +15,9 @@ function Home() {
           type="text"
           placeholder="Enter your favourite food"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) =>
+            dispatch({ type: "inputData", payload: e.target.value })
+          }
         />
         <button
           onClick={handClicked}
@@ -69,11 +32,7 @@ function Home() {
           {isLoading && <Loader />}
 
           {!isLoading && !error && detail ? (
-            <RecipeDetails
-              setDetail={setDetail}
-              detail={detail}
-              item={detail}
-            />
+            <RecipeDetails />
           ) : (
             meals.map((item) => (
               <div
@@ -113,21 +72,5 @@ function Home() {
     </div>
   );
 }
-function Loader() {
-  return (
-    <div className="w-2/4 flex justify-center mt-32">
-      <svg viewBox="25 25 50 50">
-        <circle r="20" cy="50" cx="50"></circle>
-      </svg>
-    </div>
-  );
-}
 
-function ErrMsg({ message }) {
-  return (
-    <p className="w-2/4 sm:w-900 mx-auto flex justify-center items-center mt-28">
-      ⛔ Meal not Found
-    </p>
-  );
-}
-export default Home;
+export default Menu;

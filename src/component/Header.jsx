@@ -3,8 +3,10 @@ import menu from "../assets/images/menu.svg";
 import home from "../assets/images/home.svg";
 import favourite from "../assets/images/favourite.svg";
 import { useState } from "react";
+import { useRecipe } from "../Context";
 
 function Header() {
+  const { state } = useRecipe();
   const [isOpen, setIsOpen] = useState(true);
   return (
     <>
@@ -14,11 +16,9 @@ function Header() {
           <li>Home</li>
           <li>Favourites</li>
         </ul>
-        <img
-          className="hidden w-5 bg-cover bg-center sm:block"
-          src={userIcon}
-          alt={userIcon}
-        />
+        <p className="hidden w-5 bg-cover bg-center sm:block">
+          {state.username}
+        </p>
         <img
           className="sm:hidden"
           onClick={() => setIsOpen(!isOpen)}
@@ -36,10 +36,10 @@ function Header() {
           <img src={favourite} />
           <p>Favourite</p>
         </button>
-        <button className="value">
+        <p className="value">
           <img src={userIcon} />
-          <p>Profile</p>
-        </button>
+          <p>{state.username}</p>
+        </p>
       </div>
     </>
   );
