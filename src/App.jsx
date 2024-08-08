@@ -11,11 +11,11 @@ const router = createBrowserRouter([
     element: <AppLayout />,
     children: [
       {
-        path: "/home",
+        path: "/",
         element: <Home />,
       },
       {
-        path: "/details",
+        path: "details/:id",
         element: <RecipeDetails />,
       },
       {
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         element: <Menu />,
       },
       {
-        path: "/",
+        path: "/create",
         element: <CreateRecipe />,
       },
     ],
