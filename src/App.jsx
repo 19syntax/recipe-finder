@@ -5,6 +5,8 @@ import AppLayout from "./Pages/AppLayout";
 import { ContextProvider } from "./Context";
 import Menu from "./Pages/Menu";
 import CreateRecipe from "./Pages/CreateRecipe";
+import NotFound from "./Pages/NotFound";
+import NewRecipe from "./Pages/NewRecipe";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +17,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "details/:id",
+        path: "menu/:id",
         element: <RecipeDetails />,
       },
       {
@@ -23,8 +25,16 @@ const router = createBrowserRouter([
         element: <Menu />,
       },
       {
+        path: "/new",
+        element: <NewRecipe />,
+      },
+      {
         path: "/create",
         element: <CreateRecipe />,
+      },
+      {
+        path: "*",
+        element: <NotFound />,
       },
     ],
   },
