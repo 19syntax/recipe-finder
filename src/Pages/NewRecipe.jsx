@@ -7,9 +7,21 @@ function NewRecipe() {
       <Header />
       <Sidebar />
       <div className="w-70 sm:w-3/4 float-right mr-0 sm:mr-16 mt-24 border">
-        <input type="text" placeholder="Enter your new recipe name" />
-        <input type="file" name="img" id="" />
-        <textarea name="" placeholder="Describe the steps" id=""></textarea>
+        <div>
+          <label>Name of Recipe</label>
+          <input
+            className="border rounded-md p-2"
+            type="text"
+            placeholder="Enter your new recipe name"
+          />
+        </div>
+        <input className="my-4" type="file" name="img" id="" />
+
+        <div>
+          <label>Enter your ingredient</label>
+          <input type="text" placeholder="Enter all the ingredient" />
+        </div>
+        <button type="submit">S</button>
       </div>
     </>
   );
