@@ -16,11 +16,12 @@ function Sidebar() {
               <li>Home</li>
             </span>
           </Link>
-
-          <span className="flex gap-4 cursor-pointer text-lg my-4 p-2 font-medium rounded-md hover:bg-headerBg duration-100 hover:text-white">
-            <img src={favorite} alt="" />
-            <li>Favourite</li>
-          </span>
+          <Link to="/myrecipe">
+            <span className="flex gap-4 cursor-pointer text-lg my-4 p-2 font-medium rounded-md hover:bg-headerBg duration-100 hover:text-white">
+              <img src={favorite} alt="" />
+              <li>My Recipe</li>
+            </span>
+          </Link>
           <Link to="/new">
             <span className="flex gap-4 cursor-pointer text-lg my-4 p-2 font-medium rounded-md hover:bg-headerBg duration-100 hover:text-white">
               <img src={nnew} alt="" />
@@ -33,11 +34,12 @@ function Sidebar() {
             <li>Bookmark</li>
           </span>
         </ul>
-
-        <span className="flex gap-4 fixed bottom-0 w-2/12 cursor-pointer text-lg my-4 p-2 font-medium rounded-md bg-headerBg duration-100 text-white">
-          <img src={logout} alt="" />
-          <p>Log out</p>
-        </span>
+        <Link to="/">
+          <span className="flex gap-4 fixed bottom-0 w-2/12 cursor-pointer text-lg my-4 p-2 font-medium bg-headerBg duration-100 text-white">
+            <img src={logout} alt="" />
+            <p>Log out</p>
+          </span>
+        </Link>
       </nav>
     </div>
   );

@@ -7,6 +7,8 @@ import Menu from "./Pages/Menu";
 import CreateRecipe from "./Pages/CreateRecipe";
 import NotFound from "./Pages/NotFound";
 import NewRecipe from "./Pages/NewRecipe";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import MyRecipe from "./Pages/MyRecipe";
 
 const router = createBrowserRouter([
   {
@@ -33,6 +35,10 @@ const router = createBrowserRouter([
         element: <CreateRecipe />,
       },
       {
+        path: "myrecipe",
+        element: <MyRecipe />,
+      },
+      {
         path: "*",
         element: <NotFound />,
       },
@@ -40,11 +46,15 @@ const router = createBrowserRouter([
   },
 ]);
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <ContextProvider>
-      <RouterProvider router={router} />
-    </ContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <ContextProvider>
+        <RouterProvider router={router} />
+      </ContextProvider>
+    </QueryClientProvider>
   );
 }
 
