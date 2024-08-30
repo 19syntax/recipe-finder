@@ -11,12 +11,13 @@ import { useRecipe } from "../Context";
 function Header() {
   const { state, dispatch, handClicked } = useRecipe();
   const [isOpen, setIsOpen] = useState(true);
+
   return (
     <>
       <div className="bg-headerBg text-white fixed w-full py-4 px-8 flex justify-between items-center z-10">
         <h3 className="font-bold text-lg">CUISINE CRAZE</h3>
 
-        <div className="flex gap-3">
+        <div className="md:flex hidden gap-3">
           <input
             className="sm:w-200 w-52 border-2 pl-2 pr-10 py-2 text-black outline-none border-none rounded sm:p-2"
             type="text"

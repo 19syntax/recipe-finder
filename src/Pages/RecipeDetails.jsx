@@ -10,7 +10,7 @@ function RecipeDetails() {
   return (
     <>
       <Sidebar />
-      <div className="w-70 sm:w-3/4 float-right mr-0 sm:mr-16 mt-24 border">
+      <div className="md:w-70 w-full  sm:w-3/4 float-right mt-24 border">
         <div className="flex gap-20">
           <img
             className="w-full sm:h-400 bg-center lg:w-65 object-cover bg-cover mb-8 border"
@@ -207,7 +207,7 @@ function RecipeDetails() {
             <p className="font-semibold text-headerBg pb-2">INSTRUCTIONS</p>
             <p className="pl-4">{recipeDetail.strInstructions}</p>
           </div>
-          <p className="font-bold text-neutral-700 mt-10">
+          <p className="font-bold md:block hidden text-neutral-700 mt-10 w-1/2">
             SOURCE:
             <span className="text-headerBg w-full pl-3">
               {recipeDetail.strSource}

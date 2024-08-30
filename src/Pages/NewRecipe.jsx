@@ -29,15 +29,15 @@ function NewRecipe() {
     e.preventDefault();
     setIngredient([...ingredient, input]);
     setInput("");
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
     setFormData((item) => ({
       ...item,
       ingredientList: [...item.ingredientList, ...ingredient],
     }));
-  }
-  function handleSubmit(e) {
-    e.preventDefault();
     // mutation.mutate(formData);
-    console.log(formData);
+    if (formData.ingredientList.length) console.log(formData);
   }
   return (
     <>

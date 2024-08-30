@@ -8,13 +8,18 @@ import New from "../component/New";
 function Menu() {
   const { state, handleDetails } = useRecipe();
   const { meals, error, isLoading } = state;
+
+  // const history = useHistory();
+  // useEffect(() => {
+  //   history.push("/");
+  // }, [history]);
   return (
     <>
       <Sidebar />
       <Link to="/new">
         <New />
       </Link>
-      <div className="w-70 sm:w-3/4 float-right mr-0 sm:mr-16 mt-24">
+      <div className="md:w-70 w-90 p-4 sm:w-3/4 float-right mr-0 sm:mr-16 mt-24">
         <div className="grid gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
           {isLoading ? (
             <Loader />
