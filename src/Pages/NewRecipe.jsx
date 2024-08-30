@@ -45,15 +45,15 @@ function NewRecipe() {
       <Sidebar />
       <form
         onSubmit={handleSubmit}
-        className="w-70 sm:w-3/4 py-8 px-4 float-right mr-0 sm:mr-16 mt-24 shadow-lg"
+        className="w-full md:w-70 sm:w-3/4 py-8 px-4 float-right mr-0 sm:mr-16 mt-16 md:mt-24 shadow-lg"
       >
         <h1 className="text-center font-bold text-2xl text-headerBg pb-3">
           Create a New Meal
         </h1>
-        <div className="flex gap-3 py-3 items-center">
+        <div className="flex flex-col md:flex-row gap-3 py-3 md:items-center">
           <label>Name of the recipe: </label>
           <input
-            className="border p-2 w-1/2 outline-headerBg"
+            className="w-full border p-2 md:w-1/2 outline-headerBg"
             type="text"
             name="recipeName"
             placeholder="Enter your new recipe name"
@@ -66,10 +66,10 @@ function NewRecipe() {
           <label>Choose a new image file: </label>
           <input type="file" name="img" id="" />
         </div>
-        <div className="flex gap-3 py-3">
+        <div className="flex flex-col md:flex-row gap-3 py-3">
           <label>Enter your recipe description: </label>
           <textarea
-            className="border w-200 h-72 p-2 outline-headerBg"
+            className="border w-full md:w-200 h-72 p-2 outline-headerBg"
             name="recipeDescription"
             value={formData.description}
             onChange={handleChange}
@@ -92,7 +92,7 @@ function NewRecipe() {
 
             <button
               disabled={!input}
-              className="bg-headerBg py-1 px-6 rounded-md text-white"
+              className="bg-headerBg py-1 px-6 rounded-md hover:opacity-85 text-white"
               onClick={handleAdd}
             >
               Enter
@@ -105,7 +105,7 @@ function NewRecipe() {
           </ul>
         </div>
 
-        <button className="w-full bg-headerBg py-3 rounded-md text-white font-bold">
+        <button className="w-full bg-headerBg py-3 rounded-md text-white font-bold hover:opacity-80">
           Add Meal
         </button>
       </form>
